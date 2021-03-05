@@ -1,25 +1,17 @@
 import torch
 import torch.nn as nn
 import nltk
-import json
 from nltk.stem.porter import PorterStemmer
-from model_structure import NeuralNet
 import random
 
 import bentoml
 from bentoml.frameworks.pytorch import PytorchModelArtifact
 from bentoml.service.artifacts.common import JSONArtifact
-from bentoml.adapters import JsonInput, JsonOutput
+from bentoml.adapters import JsonInput
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cpu')
 
-with open('intents.json', 'r') as f:
-    intents = json.load(f)
 
-data_file = "data.pth"
-data = torch.load(data_file)
-
-model = torch.load("model.pth")
 
 stemmer = PorterStemmer()
 
@@ -40,8 +32,9 @@ def bag_of_words(s, words):
 @bentoml.env(infer_pip_packages=True)
 @bentoml.artifacts([PytorchModelArtifact('model'), JSONArtifact('intents'), JSONArtifact('data')])
 class Chatbot(bentoml.BentoService):
-    @bentoml.api(input=JsonInput(), batch=True)
-    def predict(self, words):   
+    @bentoml.api(input=JsonInput())
+    def predict(self, words):
+        words = words["sentence"]   
         all_words = self.artifacts.data["all_words"]
         tags = self.artifacts.data["tags"]
         intents = self.artifacts.intents
@@ -54,9 +47,3 @@ class Chatbot(bentoml.BentoService):
         answer = random.choice(responses)
         return answer
 
-svc = Chatbot()
-
-svc.pack('model', model)
-svc.pack("intents", intents)
-svc.pack("data", data)
-svc.save()
