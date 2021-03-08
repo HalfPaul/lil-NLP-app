@@ -27,7 +27,10 @@
     <div class="main-text">
       <h1>Work with: </h1>
     </div>
-  </main>
+<div class="buttons">
+  <button class="john-button"><img src="{{ url_for('static', filename='images/john.png') }}"/><span>John</span></button>
+  <button class="sam-button"><img src="{{ url_for('static', filename='images/sam.png') }}"/><span>Sam</span></button>
+</div>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
