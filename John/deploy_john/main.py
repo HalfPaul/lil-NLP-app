@@ -9,7 +9,7 @@ import torch
 from transformers import AutoTokenizer
 
 
-@bentoml.env(infer_pip_packages=True)
+@bentoml.env(pip_packages=['torch==1.6.0', "wikipedia", "transformers"])
 @bentoml.artifacts([OnnxModelArtifact('onnx_model', backend='onnxruntime')])
 class QandA(bentoml.BentoService):
     @bentoml.api(input=JsonInput())

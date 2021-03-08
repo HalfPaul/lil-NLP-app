@@ -1,5 +1,5 @@
 import requests
 import json
 payload = {'sentence': 'hello'}
-response = requests.post("http://127.0.0.1:5000/predict",  data=json.dumps(payload))
+response = requests.post("https://chatbot-api52.herokuapp.com/predict",  data=json.dumps(payload))
 print(response.text)

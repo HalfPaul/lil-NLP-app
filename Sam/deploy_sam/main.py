@@ -29,11 +29,12 @@ def bag_of_words(s, words):
             
     return torch.tensor(bag, dtype=torch.float, device=device)
 
-@bentoml.env(infer_pip_packages=True)
+@bentoml.env(pip_packages=['torch==1.6.0', "nltk==3.5"])
 @bentoml.artifacts([PytorchModelArtifact('model'), JSONArtifact('intents'), JSONArtifact('data')])
 class Chatbot(bentoml.BentoService):
     @bentoml.api(input=JsonInput())
     def predict(self, words):
+        nltk.download('punkt')
         words = words["sentence"]   
         all_words = self.artifacts.data["all_words"]
         tags = self.artifacts.data["tags"]
@@ -46,4 +47,3 @@ class Chatbot(bentoml.BentoService):
                 responses = tg['responses']
         answer = random.choice(responses)
         return answer
-
