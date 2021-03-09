@@ -1,4 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
-	<h1>John</h1>
+<div class="content-section">
+	<form action="/john/get" method="POST">
+		<textarea class="form-control form-control-lg" type="question" name="question" placeholder="Don't be shy, ask John a question!"></textarea>
+		<input type="submit" name="submit" value="Submit"  class="btn btn-success">
+		{% if answer %}
+		<h2 class="answer">{{ answer }}</h2>
+		{% endif %}
+	</form>
+	</div>
 	{% endblock %}

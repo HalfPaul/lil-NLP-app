@@ -83,6 +83,23 @@ button {
 }
 .botText span {
     background-color: #EF5350;
-    padding: 10px;
+    padding: 8px;
     border-radius: 2px;
+}
+
+.content-section {
+    margin-top: 250px;
+    margin-left: 30%;
+    
+}
+
+textarea {
+    max-width: 600px;
+    max-height: 150px;
+}
+
+.about {
+    margin-top: 150px;
+    margin-right: 300px;
+    padding: 30px;
 }

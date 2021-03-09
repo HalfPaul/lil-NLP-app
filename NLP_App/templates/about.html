@@ -1,4 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class ="about">
 	<h1>About Page</h1>
+	<p>This is an app that I created to learn more about nlp and especially more about deployment. Here I deployed 2 NLP APIs. Sam is a simple conversational chatbot, created with pytorch. and John is question answering bot, based on pretrained HuggingFace model called distilbert, which is smaller version of Bert model, I converted this model into onnx model and quantized it for better interference. John takes 2 inputs: question and context. Model get question from user and context using wikipedia api.</p>
+	<h2>Disclaimer</h2>
+	<p>Because of lack of funds, apis and site is hosted on heroku free dynos. Because of that, after 30mins of inactivity the processes turn off. So, regarding that, user, who is going to use Sam, might need to type his first input twice.</p>
+	<h2>My Github</h2>
+	<p>Check this project source code and my other projects <a href="https://github.com/handertolium">here.</a> </p>
+</div>
 	{% endblock %}

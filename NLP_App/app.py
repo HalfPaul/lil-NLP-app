@@ -29,6 +29,15 @@ def chatbot_request():
     response = requests.post("https://chatbot-api52.herokuapp.com/predict",  data=json.dumps(payload))
     return str(response.text)
 
+@app.route("/john/get", methods=["GET","POST"])
+def QandA_request():
+    user_text = request.form['question']
+
+    payload = {'input': str(user_text)}
+    response = requests.post("https://qanda-api52.herokuapp.com/predict",  data=json.dumps(payload))
+    answer = str(response.text)
+    return render_template("john.html", answer=answer)
+
 
 
 
