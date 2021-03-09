@@ -18,3 +18,5 @@ Sam and John were deployed as separate REST APIs on heroku, I used Bentoml as de
 ## Acknowledgements
 * I used code snippets from [this blog post](https://codinginfinite.com/chatbot-in-python-flask-tutorial/) for chatbot's frontend.
 * I used [Python Engineer's](https://www.youtube.com/watch?v=RpWeNzfSUHw) Youtube videos for training the chatbot. 
+
+![Front end design](https://github.com/handertolium/Chatbot-application/blob/main/Readme_imgs/home_photo.png)
