@@ -1,4 +1,4 @@
-# Chatbot-application
+# lil NLP App
 Project where I train, prepare and deploy 2 different NLP tasks. Project is deployed [here](https://lil-nlp-app.herokuapp.com/).
 
 ## Introduction
